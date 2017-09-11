@@ -51,4 +51,25 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 		// assert
 		return 	$this->assertEquals($expect, $result);	
 	}
+
+	public function test_all_spare() {
+		// arrange
+		$scores = array(2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2, 8,
+						2);
+		$expect	= 122;
+		// act
+		$bowling 	= new bowling();
+		$result		= $bowling->countScore($scores);
+		// assert
+		return 	$this->assertEquals($expect, $result); 
+	}
 }
