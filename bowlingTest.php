@@ -18,7 +18,7 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 		$bowling 	= new bowling();
 		$result		= $bowling->countScore($scores);
 		// assert
-		return 	$this->assertEquals($expect, $actual);
+		return 	$this->assertEquals($expect, $result);
 	}
 
 	public function test_no_stike_no_spare() {
@@ -38,6 +38,6 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 		$bowling 	= new bowling();
 		$result		= $bowling->countScore($scores);
 		// assert
-		return 	$this->assertEquals($expect, $actual);
+		return 	$this->assertEquals($expect, $result);
 	}
 }
