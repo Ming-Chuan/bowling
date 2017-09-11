@@ -40,4 +40,15 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 		// assert
 		return 	$this->assertEquals($expect, $result);
 	}
+
+	public function test_all_strike() {
+		// arrange
+		$scores = array(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+		$expect	= 300;
+		// act
+		$bowling 	= new bowling();
+		$result		= $bowling->countScore($scores);
+		// assert
+		return 	$this->assertEquals($expect, $result);	
+	}
 }
