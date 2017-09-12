@@ -7,6 +7,10 @@ class bowling {
 		$total 	= 0;
 		$round 	= 1;
 
+
+		if (is_array($scores) === false) {
+			throw new InvalidArgumentException();
+		}
 		$arrayCnt 	= count($scores);
 		if ($arrayCnt < 12 || $arrayCnt > 21) {
 			throw new LengthException();
