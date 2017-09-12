@@ -5,6 +5,12 @@ class bowling {
 		$round 	= 1;
 		$ball	= 0;
 		$roundScore 	= 0;
+
+		$arrayCnt 	= count($scores);
+		if ($arrayCnt < 12 || $arrayCnt > 21) {
+			throw new LengthException();
+		}
+
 		foreach ($scores as $index => $score) {
 			if ($round > 10) { 
 				break;
