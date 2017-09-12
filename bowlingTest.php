@@ -65,7 +65,7 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 						2, 8,
 						2, 8,
 						2);
-		$expect	= 122;
+		$expect	= 120;
 		// act
 		$bowling 	= new bowling();
 		$result		= $bowling->countScore($scores);
