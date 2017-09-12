@@ -167,4 +167,14 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 		$result		= $bowling->countScore($scores);
 		// assert (phpunit auto check)		
 	}
+
+	public function test_abnormal_score_type() {
+		// arrange
+		$scores 	= 123; // abnormal score type, should be array, but int
+		$this->setExpectedException('InvalidArgumentException');
+		// act
+		$bowling 	= new bowling();
+		$result		= $bowling->countScore($scores);
+		// assert (phpunit auto check)		
+	}
 }
