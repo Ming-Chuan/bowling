@@ -41,8 +41,13 @@ class bowling {
 				// clean
 				$this->clean();
 			} elseif ($this->ball == 2) { // no spare
-				$total 	= $total + $this->roundScore + $score;
 				
+				if ($this->roundScore + $score > 10) {
+					throw new InvalidArgumentException();
+				}
+
+				$total 	= $total + $this->roundScore + $score;
+
 				$round++;
 				// clean
 				$this->clean();
