@@ -1,10 +1,11 @@
 <?php
 class bowling {
+	private $ball = 0;
+	private $roundScore = 0;
+
 	public function countScore($scores) {
 		$total 	= 0;
 		$round 	= 1;
-		$ball	= 0;
-		$roundScore 	= 0;
 
 		$arrayCnt 	= count($scores);
 		if ($arrayCnt < 12 || $arrayCnt > 21) {
@@ -21,30 +22,28 @@ class bowling {
 
 			$this->checkNumeric($score);
 
-			$ball++;
-			if ($ball == 1 && $score == 10) { // strike
+			$this->ball++;
+			if ($this->ball == 1 && $score == 10) { // strike
 				$this->checkNumeric($next1);
 				$this->checkNumeric($next2);
 				$total 	= $total + $score + $next1 + $next2;
 				$round++;
 				// clean
-				$ball = 0;
-			} elseif ($ball == 2 && ($roundScore + $score) == 10) { // spare
+				$this->clean();
+			} elseif ($this->ball == 2 && ($this->roundScore + $score) == 10) { // spare
 				$this->checkNumeric($next1);
-				$total 	= $total + $roundScore + $score + $next1;
+				$total 	= $total + $this->roundScore + $score + $next1;
 				$round++;
 				// clean
-				$ball 	= 0;
-				$roundScore = 0;
-			} elseif ($ball == 2) { // no spare
-				$total 	= $total + $roundScore + $score;
+				$this->clean();
+			} elseif ($this->ball == 2) { // no spare
+				$total 	= $total + $this->roundScore + $score;
 				
 				$round++;
 				// clean
-				$ball 	= 0;
-				$roundScore = 0;
+				$this->clean();
 			} else { // ball 1
-				$roundScore = $score;
+				$this->roundScore = $score;
 			}
 		}
 		return $total;
@@ -54,5 +53,10 @@ class bowling {
 		if (is_numeric($val) === false) {
 			throw new InvalidArgumentException();
 		}
+	}
+
+	private function clean() {
+		$this->ball = 0;
+		$this->roundScore = 0;
 	}
 }
