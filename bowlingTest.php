@@ -94,4 +94,25 @@ class bowlingTest extends PHPUnit_Framework_TestCase{
 		// assert
 		return 	$this->assertEquals($expect, $result); 
 	}
+
+	public function test_abnormal_number() {
+		// arrange
+		$scores = array(2, 8, // 17
+						7, 3, // 20
+						'a', // abnormal value, should throw exception
+						10, // 17
+						2, 5, // 7
+						6, 4, // 12
+						2, 8, // 20
+						10, // 16
+						3, 3, // 6
+						10, // 27
+						7, // extra
+						10); // extra
+		$this->setExpectedException('InvalidArgumentException');
+		// act
+		$bowling 	= new bowling();
+		$result		= $bowling->countScore($scores);
+		// assert (phpunit auto check)
+	}
 }
