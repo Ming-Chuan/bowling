@@ -24,18 +24,18 @@ class bowling {
 			$next1 	= $scores[$index + 1];
 			$next2 	= $scores[$index + 2];
 
-			$this->checkNumeric($score);
+			$this->checkValue($score);
 
 			$this->ball++;
 			if ($this->ball == 1 && $score == 10) { // strike
-				$this->checkNumeric($next1);
-				$this->checkNumeric($next2);
+				$this->checkValue($next1);
+				$this->checkValue($next2);
 				$total 	= $total + $score + $next1 + $next2;
 				$round++;
 				// clean
 				$this->clean();
 			} elseif ($this->ball == 2 && ($this->roundScore + $score) == 10) { // spare
-				$this->checkNumeric($next1);
+				$this->checkValue($next1);
 				$total 	= $total + $this->roundScore + $score + $next1;
 				$round++;
 				// clean
@@ -53,8 +53,8 @@ class bowling {
 		return $total;
 	}
 
-	private function checkNumeric($val) {
-		if (is_numeric($val) === false) {
+	private function checkValue($val) {
+		if (is_numeric($val) === false || $val < 0 || $val > 10) {
 			throw new InvalidArgumentException();
 		}
 	}
